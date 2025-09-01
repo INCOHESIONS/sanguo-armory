@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "**",
+        "**",
+        "**"
+    ],
+    "key": {
+        "*": "minecraft:cobblestone"
+    },
+    "result": {
+        "id": "sanguo_armory:crescent_template",
+        "count": 1
+    }
+}
