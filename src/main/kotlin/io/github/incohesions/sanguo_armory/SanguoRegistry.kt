@@ -90,7 +90,7 @@ class SanguoRegistry {
 
         Registry.register(
             Registries.ITEM_GROUP,
-            RegistryKey.of(RegistryKeys.ITEM_GROUP, SanguoArmory.id("itemGroup")),
+            RegistryKey.of(RegistryKeys.ITEM_GROUP, SanguoArmory.id("item_group")),
             FabricItemGroup
                 .builder()
                 .displayName(Text.translatable("itemGroup.${SanguoArmory.MOD_ID}"))
