@@ -7,12 +7,11 @@ import org.slf4j.LoggerFactory
 
 class SanguoArmory : ModInitializer {
     companion object {
-        @get: JvmStatic
-        @get: JvmName("MOD_ID")
+        @get:JvmName("MOD_ID")
         const val MOD_ID = "sanguo_armory"
 
-        @get: JvmStatic
-        @get: JvmName("logger")
+        @JvmStatic
+        @get:JvmName("logger")
         val LOGGER: Logger = LoggerFactory.getLogger(MOD_ID)
 
         @JvmStatic

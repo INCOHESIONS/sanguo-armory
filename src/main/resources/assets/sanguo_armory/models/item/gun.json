@@ -1,39 +1,99 @@
 {
-	"format_version": "1.21.6",
-	"credit": "Made with Blockbench",
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "sanguo_armory:item/gun"
-	},
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [-15, -90, 28],
-			"translation": [0, 6.25, -0.5],
-			"scale": [4, 4, 1]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [-15, 90, -28],
-			"translation": [0, 6.25, -0.5],
-			"scale": [4, 4, 1]
-		},
-		"firstperson_righthand": {
-			"rotation": [-20, -90, 45],
-			"translation": [0, 2, -2],
-			"scale": [4, 4, 1]
-		},
-		"firstperson_lefthand": {
-			"rotation": [-20, 90, -45],
-			"translation": [0, 2, -2],
-			"scale": [4, 4, 1]
-		},
-		"ground": {
-			"scale": [2, 2, 1]
-		},
-		"gui": {
-			"scale": [2, 2, 1]
-		},
-		"fixed": {
-			"scale": [4, 4, 1]
-		}
-	}
+    "format_version": "1.21.6",
+    "credit": "Made with Blockbench",
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "sanguo_armory:item/gun"
+    },
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [
+                -15,
+                -90,
+                28
+            ],
+            "translation": [
+                0,
+                6.25,
+                -0.5
+            ],
+            "scale": [
+                4,
+                4,
+                1
+            ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [
+                -15,
+                90,
+                -28
+            ],
+            "translation": [
+                0,
+                6.25,
+                -0.5
+            ],
+            "scale": [
+                4,
+                4,
+                1
+            ]
+        },
+        "firstperson_righthand": {
+            "rotation": [
+                -20,
+                -90,
+                45
+            ],
+            "translation": [
+                0,
+                2,
+                -2
+            ],
+            "scale": [
+                4,
+                4,
+                1
+            ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [
+                -20,
+                90,
+                -45
+            ],
+            "translation": [
+                0,
+                2,
+                -2
+            ],
+            "scale": [
+                4,
+                4,
+                1
+            ]
+        },
+        "ground": {
+            "scale": [
+                2,
+                2,
+                1
+            ]
+        },
+        "gui": {
+            "scale": [
+                2,
+                2,
+                1
+            ]
+        },
+        "fixed": {
+            "scale": [
+                4,
+                4,
+                1
+            ]
+        }
+    }
 }

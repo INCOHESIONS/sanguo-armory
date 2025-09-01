@@ -1,6 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "sanguo_armory:item/podao"
-  }
+    "model": {
+        "type": "minecraft:model",
+        "model": "sanguo_armory:item/podao"
+    }
 }

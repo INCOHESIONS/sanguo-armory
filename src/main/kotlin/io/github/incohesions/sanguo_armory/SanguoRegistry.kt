@@ -27,19 +27,19 @@ import net.minecraft.util.Rarity.*
 class SanguoRegistry {
     companion object {
         @JvmStatic
-        @get: JvmName("getHeldEffectComponent")
+        @get:JvmName("getHeldEffectComponent")
         val HELD_EFFECT = component("held_effect", HeldEffectComponent.TYPE)
 
         @JvmStatic
-        @get: JvmName("getImmuneToCactiComponent")
+        @get:JvmName("getImmuneToCactiComponent")
         val IMMUNE_TO_CACTI = component("immune_to_cacti", booleanComponent())
 
         @JvmStatic
-        @get: JvmName("getImmuneToAnvilsComponent")
+        @get:JvmName("getImmuneToAnvilsComponent")
         val IMMUNE_TO_ANVILS = component("immune_to_anvils", booleanComponent())
 
         @JvmStatic
-        @get: JvmName("getProtectsAgainstExplosions")
+        @get:JvmName("getProtectsAgainstExplosions")
         val PROTECTS_AGAINST_EXPLOSIONS = component("protects_against_explosions", booleanComponent())
 
         fun <T> component(id: String, type: ComponentType<T>): ComponentType<T> = Registry.register(
@@ -60,6 +60,7 @@ class SanguoRegistry {
         val items = arrayOf(
             combat<BlazeStaffItem>("blaze_staff", attackSpeed = -3.0F, useCooldown = 2.5F) {
                 it.component(PROTECTS_AGAINST_EXPLOSIONS, true)
+                    .effect("fire_resistance")
             },
             combat<FangtianJiItem>("fangtian_ji", "strength" to 0),
             combat<ViperLance>("viper_lance", "resistance" to 0),
@@ -99,13 +100,15 @@ class SanguoRegistry {
         )
     }
 
-    private inline fun <T : Item> factory(id: String, get: (Item.Settings) -> T): T {
+    private inline fun <T : Item> factory(id: String, factory: (Item.Settings) -> T): T {
         val key = RegistryKey.of(RegistryKeys.ITEM, SanguoArmory.id(id))
-        val item = get(Item.Settings().registryKey(key))
-        return Registry.register(Registries.ITEM, key, item)
+        return Registry.register(Registries.ITEM, key, factory(Item.Settings().registryKey(key)))
     }
 
-    private inline fun <reified T : Item> withType(id: String, configure: (Item.Settings) -> Item.Settings = { it }): T = factory(id) {
+    private inline fun <reified T : Item> withType(
+        id: String,
+        configure: (Item.Settings) -> Item.Settings = { it }
+    ): T = factory(id) {
         T::class.constructors.first().call(configure(it))
     }
 

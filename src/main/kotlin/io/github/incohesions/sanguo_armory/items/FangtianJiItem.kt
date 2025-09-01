@@ -23,7 +23,8 @@ class FangtianJiItem(settings: Settings) : Item(settings) {
         const val DIST = 0.75
         const val SPEED = 2.0
 
-        fun coloredDust(r: Int, g: Int, b: Int): DustParticleEffect = DustParticleEffect(ColorHelper.getArgb(r, g, b), 1.0F)
+        fun coloredDust(r: Int, g: Int, b: Int): DustParticleEffect =
+            DustParticleEffect(ColorHelper.getArgb(r, g, b), 1.0F)
     }
 
     override fun inventoryTick(stack: ItemStack, world: ServerWorld, entity: Entity, slot: EquipmentSlot?) {

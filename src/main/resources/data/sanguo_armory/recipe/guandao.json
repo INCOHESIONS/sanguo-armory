@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "  C",
-    " B ",
-    "A  "
-  ],
-  "key": {
-    "A": "sanguo_armory:pole",
-    "B": "minecraft:emerald",
-    "C": "sanguo_armory:guandao_blade"
-  },
-  "result": {
-    "id": "sanguo_armory:guandao",
-    "count": 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  C",
+        " B ",
+        "A  "
+    ],
+    "key": {
+        "A": "sanguo_armory:pole",
+        "B": "minecraft:emerald",
+        "C": "sanguo_armory:guandao_blade"
+    },
+    "result": {
+        "id": "sanguo_armory:guandao",
+        "count": 1
+    }
 }

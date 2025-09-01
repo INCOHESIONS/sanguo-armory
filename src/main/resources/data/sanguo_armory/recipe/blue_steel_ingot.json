@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:blasting",
-  "ingredient": "sanguo_armory:mild_steel_ingot",
-  "result": {
-    "id": "sanguo_armory:blue_steel_ingot"
-  },
-  "experience": 0.3,
-  "cookingtime": 200
+    "type": "minecraft:blasting",
+    "ingredient": "sanguo_armory:mild_steel_ingot",
+    "result": {
+        "id": "sanguo_armory:blue_steel_ingot"
+    },
+    "experience": 0.3,
+    "cookingtime": 200
 }

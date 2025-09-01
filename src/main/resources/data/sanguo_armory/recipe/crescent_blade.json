@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "sanguo_armory:crescent_template",
-  "base": "sanguo_armory:blue_steel_ingot",
-  "addition": "minecraft:cobblestone",
-  "result": {
-    "id": "sanguo_armory:crescent_blade"
-  }
+    "type": "minecraft:smithing_transform",
+    "template": "sanguo_armory:crescent_template",
+    "base": "sanguo_armory:blue_steel_ingot",
+    "addition": "minecraft:cobblestone",
+    "result": {
+        "id": "sanguo_armory:crescent_blade"
+    }
 }

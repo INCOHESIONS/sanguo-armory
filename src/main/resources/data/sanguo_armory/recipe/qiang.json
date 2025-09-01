@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "  C",
-    " B ",
-    "A  "
-  ],
-  "key": {
-    "A": "sanguo_armory:pole",
-    "B": "minecraft:diamond",
-    "C": "sanguo_armory:heavenly_spearhead"
-  },
-  "result": {
-    "id": "sanguo_armory:qiang",
-    "count": 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  C",
+        " B ",
+        "A  "
+    ],
+    "key": {
+        "A": "sanguo_armory:pole",
+        "B": "minecraft:diamond",
+        "C": "sanguo_armory:heavenly_spearhead"
+    },
+    "result": {
+        "id": "sanguo_armory:qiang",
+        "count": 1
+    }
 }

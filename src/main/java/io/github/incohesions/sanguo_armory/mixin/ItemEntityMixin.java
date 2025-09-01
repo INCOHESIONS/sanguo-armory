@@ -23,7 +23,12 @@ public abstract class ItemEntityMixin extends Entity {
     public abstract ItemStack getStack();
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
-    final void damage(final ServerWorld world, final DamageSource source, final float amount, final CallbackInfoReturnable<Boolean> cir) {
+    final void damage(
+        final ServerWorld world,
+        final DamageSource source,
+        final float amount,
+        final CallbackInfoReturnable<Boolean> cir
+    ) {
         final var immuneToAnvils = Utils.checkComponent(getStack(), SanguoRegistry.getImmuneToAnvilsComponent());
         final var immuneToCacti = Utils.checkComponent(getStack(), SanguoRegistry.getImmuneToCactiComponent());
 

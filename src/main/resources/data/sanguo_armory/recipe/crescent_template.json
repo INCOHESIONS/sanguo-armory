@@ -1,14 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BAB"
-  ],
-  "key": {
-    "A": "sanguo_armory:stone_template",
-    "B": "minecraft:amethyst_shard"
-  },
-  "result": {
-    "id": "sanguo_armory:crescent_template",
-    "count": 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BAB"
+    ],
+    "key": {
+        "A": "sanguo_armory:stone_template",
+        "B": "minecraft:amethyst_shard"
+    },
+    "result": {
+        "id": "sanguo_armory:crescent_template",
+        "count": 1
+    }
 }

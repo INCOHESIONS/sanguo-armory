@@ -1,6 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "sanguo_armory:item/guandao_blade"
-  }
+    "model": {
+        "type": "minecraft:model",
+        "model": "sanguo_armory:item/guandao_blade"
+    }
 }

@@ -1,6 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "sanguo_armory:item/viper_lance"
-  }
+    "model": {
+        "type": "minecraft:model",
+        "model": "sanguo_armory:item/viper_lance"
+    }
 }

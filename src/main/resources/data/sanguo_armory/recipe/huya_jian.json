@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "  C",
-    " B ",
-    "A  "
-  ],
-  "key": {
-    "A": "minecraft:stick",
-    "B": "minecraft:redstone_dust",
-    "C": "sanguo_armory:guandao_blade"
-  },
-  "result": {
-    "id": "sanguo_armory:huya_jian",
-    "count": 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  C",
+        " B ",
+        "A  "
+    ],
+    "key": {
+        "A": "minecraft:stick",
+        "B": "minecraft:redstone_dust",
+        "C": "sanguo_armory:guandao_blade"
+    },
+    "result": {
+        "id": "sanguo_armory:huya_jian",
+        "count": 1
+    }
 }

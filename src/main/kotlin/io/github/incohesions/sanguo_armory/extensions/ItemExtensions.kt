@@ -12,14 +12,10 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
-import net.minecraft.util.Rarity.*
 import net.minecraft.util.Unit
 
 fun Item.Settings.lore(vararg lines: Text): Item.Settings =
     component(DataComponentTypes.LORE, LoreComponent(lines.toList()))
-
-fun Item.Settings.unbreakable(): Item.Settings =
-    component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE)
 
 fun Item.Settings.cooldown(cooldown: Float?): Item.Settings {
     return useCooldown(cooldown ?: return this)
@@ -32,15 +28,21 @@ fun Item.Settings.resistant(vararg tags: TagKey<DamageType>): Item.Settings {
     return this
 }
 
-fun Item.Settings.component(vararg components: ComponentType<Boolean>): Item.Settings {
-    components.forEach {
-        component(it, true)
-    }
+fun Item.Settings.booleans(vararg components: ComponentType<Boolean>): Item.Settings {
+    components.forEach { component(it, true) }
     return this
 }
 
-fun Item.Settings.indestructible(): Item.Settings =
-    component(SanguoRegistry.IMMUNE_TO_CACTI, SanguoRegistry.IMMUNE_TO_ANVILS)
+fun Item.Settings.markers(vararg components: ComponentType<Unit>): Item.Settings {
+    components.forEach { component(it, Unit.INSTANCE) }
+    return this
+}
+
+fun Item.Settings.unbreakable(): Item.Settings =
+    markers(DataComponentTypes.UNBREAKABLE)
+
+fun Item.Settings.indestructible(): Item.Settings = this
+    .booleans(SanguoRegistry.IMMUNE_TO_CACTI, SanguoRegistry.IMMUNE_TO_ANVILS)
     .resistant(DamageTypeTags.IS_FIRE, DamageTypeTags.IS_EXPLOSION, DamageTypeTags.IS_LIGHTNING)
 
 fun Item.Settings.effect(id: String, amplifier: Int = 0): Item.Settings =

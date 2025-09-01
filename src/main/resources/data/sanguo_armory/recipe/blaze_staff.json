@@ -1,19 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BGF",
-    " SG",
-    "P B"
-  ],
-  "key": {
-    "F": "minecraft:fire_charge",
-    "B": "minecraft:blaze_rod",
-    "G": "minecraft:gold_ingot",
-    "S": "sanguo_armory:blue_steel_ingot",
-    "P": "sanguo_armory:pole"
-  },
-  "result": {
-    "id": "sanguo_armory:blaze_staff",
-    "count": 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BGF",
+        " SG",
+        "P B"
+    ],
+    "key": {
+        "F": "minecraft:fire_charge",
+        "B": "minecraft:blaze_rod",
+        "G": "minecraft:gold_ingot",
+        "S": "sanguo_armory:blue_steel_ingot",
+        "P": "sanguo_armory:pole"
+    },
+    "result": {
+        "id": "sanguo_armory:blaze_staff",
+        "count": 1
+    }
 }

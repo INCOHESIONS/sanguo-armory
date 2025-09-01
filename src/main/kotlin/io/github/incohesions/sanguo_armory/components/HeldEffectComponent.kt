@@ -17,7 +17,7 @@ data class HeldEffectComponent(
         val CODEC: Codec<HeldEffectComponent> = RecordCodecBuilder.create { inst ->
             inst.group(
                 Identifier.CODEC.fieldOf("effect").forGetter { it.effectId },
-                Codec.INT.optionalFieldOf("amplifier", 0).forGetter { it.amplifier }
+                Codec.INT.fieldOf("amplifier").forGetter { it.amplifier }
             ).apply(inst, ::HeldEffectComponent)
         }
 

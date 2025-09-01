@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " B ",
-    "CBC",
-    " A "
-  ],
-  "key": {
-    "A": "minecraft:stick",
-    "B": "sanguo_armory:blue_steel_ingot",
-    "C": "minecraft:lapis_lazuli"
-  },
-  "result": {
-    "id": "sanguo_armory:yitian_ji",
-    "count": 1
-  }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " B ",
+        "CBC",
+        " A "
+    ],
+    "key": {
+        "A": "minecraft:stick",
+        "B": "sanguo_armory:blue_steel_ingot",
+        "C": "minecraft:lapis_lazuli"
+    },
+    "result": {
+        "id": "sanguo_armory:yitian_ji",
+        "count": 1
+    }
 }

@@ -43,7 +43,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
-    final void damage(final ServerWorld world, final DamageSource source, final float amount, final CallbackInfoReturnable<Boolean> cir) {
+    final void damage(
+        final ServerWorld world,
+        final DamageSource source,
+        final float amount,
+        final CallbackInfoReturnable<Boolean> cir
+    ) {
         if (
             Utils.checkComponent(inventory.getSelectedStack(), SanguoRegistry.getProtectsAgainstExplosions()) &&
             source == world.getDamageSources().explosion(null)
