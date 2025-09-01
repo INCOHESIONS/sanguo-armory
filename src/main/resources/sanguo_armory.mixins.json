@@ -1,0 +1,16 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "io.github.incohesions.sanguo_armory.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "ItemEntityMixin",
+        "PlayerEntityMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "overwrites": {
+        "requireAnnotations": true
+    }
+}

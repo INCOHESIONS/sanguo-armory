@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": "minecraft:iron_ingot",
+  "result": {
+    "id": "sanguo_armory:mild_steel_ingot"
+  },
+  "experience": 0.3,
+  "cookingtime": 200
+}

@@ -1,0 +1,34 @@
+{
+    "itemGroup.sanguo_armory": "Sanguo Armory",
+
+    "item.sanguo_armory.blaze_staff": "Blaze Staff",
+    "item.sanguo_armory.blaze_staff.lore": "Shoots fireballs.",
+    "item.sanguo_armory.viper_lance": "Viper Lance",
+    "item.sanguo_armory.guandao": "Guandao",
+    "item.sanguo_armory.qiang": "Zhao Spear",
+    "item.sanguo_armory.fangtian_ji": "Fangtian Ji",
+    "item.sanguo_armory.yu_jian": "Yu Jian",
+    "item.sanguo_armory.gun": "Gun",
+    "item.sanguo_armory.gun.lore": "Sets enemies ablaze upon contact.",
+    "item.sanguo_armory.huya_jian": "Huya Jian",
+    "item.sanguo_armory.podao": "Podao",
+
+    "item.sanguo_armory.stone_template": "Stone Template",
+
+    "item.sanguo_armory.spearhead_template": "Spearhead Template",
+    "item.sanguo_armory.crescent_template": "Crescent Template",
+
+    "item.sanguo_armory.templates.applies_to": "Blue Steel Ingot",
+    "item.sanguo_armory.templates.ingredients": "Cobblestone",
+    "item.sanguo_armory.templates.base_slot": "Add Blue Steel Ingot",
+    "item.sanguo_armory.templates.addition_slot": "Add Cobblestone",
+
+    "item.sanguo_armory.viper_blade": "Viper Blade",
+    "item.sanguo_armory.crescent_blade": "Crescent Blade",
+    "item.sanguo_armory.guandao_blade": "Guandao Blade",
+    "item.sanguo_armory.heavenly_spearhead": "Heavenly Spearhead",
+
+    "item.sanguo_armory.blue_steel_ingot": "Blue Steel Ingot",
+    "item.sanguo_armory.mild_steel_ingot": "Mild Steel Ingot",
+    "item.sanguo_armory.pole": "Pole"
+}

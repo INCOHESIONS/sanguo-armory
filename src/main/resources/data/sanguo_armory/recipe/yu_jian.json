@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "CBC",
+    " A "
+  ],
+  "key": {
+    "A": "minecraft:stick",
+    "B": "sanguo_armory:heavenly_spearhead",
+    "C": "minecraft:emerald"
+  },
+  "result": {
+    "id": "sanguo_armory:yu_jian",
+    "count": 1
+  }
+}

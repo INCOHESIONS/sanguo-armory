@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "key": {
+    "A": "sanguo_armory:stone_template",
+    "B": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "sanguo_armory:spearhead_template",
+    "count": 1
+  }
+}

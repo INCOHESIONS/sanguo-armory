@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "sanguo_armory:crescent_blade",
+    "sanguo_armory:blue_steel_ingot"
+  ],
+  "result": {
+    "id": "sanguo_armory:guandao_blade",
+    "count": 1
+  }
+}

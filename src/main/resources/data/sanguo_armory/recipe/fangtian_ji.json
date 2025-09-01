@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " BC",
+    " A ",
+    "A  "
+  ],
+  "key": {
+    "A": "sanguo_armory:pole",
+    "B": "sanguo_armory:crescent_blade",
+    "C": "sanguo_armory:heavenly_spearhead"
+  },
+  "result": {
+    "id": "sanguo_armory:fangtian_ji",
+    "count": 1
+  }
+}

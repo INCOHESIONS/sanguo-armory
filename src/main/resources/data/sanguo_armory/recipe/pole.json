@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  S",
+    " * ",
+    "S  "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "*": "minecraft:string"
+  },
+  "result": {
+    "id": "sanguo_armory:pole",
+    "count": 1
+  }
+}

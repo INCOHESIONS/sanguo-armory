@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "sanguo_armory:spearhead_template",
+  "base": "sanguo_armory:blue_steel_ingot",
+  "addition": "minecraft:cobblestone",
+  "result": {
+    "id": "sanguo_armory:heavenly_spearhead"
+  }
+}
