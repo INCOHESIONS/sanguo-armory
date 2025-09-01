@@ -15,7 +15,7 @@ class BlazeStaffItem(settings: Settings) : Item(settings) {
             .add(user.rotationVector.multiply(1.5))
             .add(0.0, user.getEyeHeight(user.pose).toDouble(), 0.0)
 
-        val fireball = FireballEntity(world, user, user.rotationVector.multiply(2.0), 5)
+        val fireball = FireballEntity(world, user, user.rotationVector.multiply(2.0), 3)
         fireball.setPosition(frontOfPlayer)
         world.spawnEntity(fireball)
 
