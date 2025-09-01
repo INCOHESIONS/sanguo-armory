@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "sanguo_armory:item/heavenly_spearhead"
+        "layer0": "sanguo_armory:item/spearhead"
     }
 }

@@ -84,7 +84,7 @@ class SanguoRegistry {
             item("viper_blade", RARE),
             item("crescent_blade", RARE),
             item("guandao_blade", RARE),
-            item("heavenly_spearhead", RARE),
+            item("spearhead", RARE),
             item("pole"),
         )
 

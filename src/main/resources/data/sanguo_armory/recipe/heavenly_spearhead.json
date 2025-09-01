@@ -4,6 +4,6 @@
     "base": "sanguo_armory:blue_steel_ingot",
     "addition": "minecraft:cobblestone",
     "result": {
-        "id": "sanguo_armory:heavenly_spearhead"
+        "id": "sanguo_armory:spearhead"
     }
 }
