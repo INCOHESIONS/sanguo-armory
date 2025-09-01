@@ -9,7 +9,7 @@
         "*": "minecraft:cobblestone"
     },
     "result": {
-        "id": "sanguo_armory:crescent_template",
+        "id": "sanguo_armory:stone_template",
         "count": 1
     }
 }
