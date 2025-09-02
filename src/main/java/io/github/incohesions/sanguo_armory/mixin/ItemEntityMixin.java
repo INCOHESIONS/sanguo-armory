@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
@@ -33,8 +34,8 @@ public abstract class ItemEntityMixin extends Entity {
         final var immuneToCacti = Utils.checkComponent(getStack(), SanguoRegistry.getImmuneToCactiComponent());
 
         if (
-            immuneToAnvils && source == world.getDamageSources().fallingAnvil(source.getAttacker()) ||
-            immuneToCacti && source == world.getDamageSources().cactus()
+            immuneToAnvils && source.isOf(DamageTypes.FALLING_ANVIL) ||
+            immuneToCacti && source.isOf(DamageTypes.CACTUS)
         ) {
             cir.cancel();
         }

@@ -1,13 +1,17 @@
 package io.github.incohesions.sanguo_armory.mixin;
 
+import io.github.incohesions.sanguo_armory.SanguoArmory;
 import io.github.incohesions.sanguo_armory.SanguoRegistry;
 import io.github.incohesions.sanguo_armory.utils.Utils;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageSources;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.projectile.AbstractFireballEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
@@ -51,7 +55,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     ) {
         if (
             Utils.checkComponent(inventory.getSelectedStack(), SanguoRegistry.getProtectsAgainstExplosions()) &&
-            source == world.getDamageSources().explosion(null)
+            source.isOf(DamageTypes.PLAYER_EXPLOSION) || source.isOf(DamageTypes.EXPLOSION)
         ) {
             cir.cancel();
         }
