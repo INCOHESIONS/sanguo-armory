@@ -14,11 +14,11 @@ data class HeldEffectComponent(
     val amplifier: Int
 ) {
     companion object {
-        val CODEC: Codec<HeldEffectComponent> = RecordCodecBuilder.create { inst ->
-            inst.group(
-                Identifier.CODEC.fieldOf("effect").forGetter { it.effectId },
-                Codec.INT.fieldOf("amplifier").forGetter { it.amplifier }
-            ).apply(inst, ::HeldEffectComponent)
+        val CODEC: Codec<HeldEffectComponent> = RecordCodecBuilder.create {
+            it.group(
+                Identifier.CODEC.fieldOf("effect").forGetter(HeldEffectComponent::effectId),
+                Codec.INT.fieldOf("amplifier").forGetter(HeldEffectComponent::amplifier)
+            ).apply(it, ::HeldEffectComponent)
         }
 
         val PACKET_CODEC: PacketCodec<RegistryByteBuf, HeldEffectComponent> = PacketCodec.tuple(
