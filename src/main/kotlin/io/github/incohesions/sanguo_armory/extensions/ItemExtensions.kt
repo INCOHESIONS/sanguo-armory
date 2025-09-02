@@ -1,7 +1,7 @@
 package io.github.incohesions.sanguo_armory.extensions
 
 import io.github.incohesions.sanguo_armory.SanguoRegistry
-import io.github.incohesions.sanguo_armory.components.HeldEffectComponent
+import io.github.incohesions.sanguo_armory.components.HeldItemEffectComponent
 import net.minecraft.component.ComponentType
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.component.type.AttributeModifierSlot
@@ -53,7 +53,7 @@ fun Item.Settings.indestructible(): Item.Settings = this
     .resistant(DamageTypeTags.IS_FIRE, DamageTypeTags.IS_EXPLOSION, DamageTypeTags.IS_LIGHTNING)
 
 fun Item.Settings.effect(id: String, amplifier: Int = 0): Item.Settings =
-    component(HeldEffectComponent.TYPE, HeldEffectComponent(Identifier.ofVanilla(id), amplifier))
+    component(HeldItemEffectComponent.TYPE, HeldItemEffectComponent(Identifier.ofVanilla(id), amplifier))
 
 fun Item.Settings.modifier(
     attr: RegistryEntry<EntityAttribute>,

@@ -1,7 +1,7 @@
 package io.github.incohesions.sanguo_armory
 
 import com.mojang.serialization.Codec
-import io.github.incohesions.sanguo_armory.components.HeldEffectComponent
+import io.github.incohesions.sanguo_armory.components.HeldItemEffectComponent
 import io.github.incohesions.sanguo_armory.extensions.*
 import io.github.incohesions.sanguo_armory.items.BlazeStaffItem
 import io.github.incohesions.sanguo_armory.items.FangtianJiItem
@@ -9,6 +9,8 @@ import io.github.incohesions.sanguo_armory.items.FieryItem
 import io.github.incohesions.sanguo_armory.items.ViperLance
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.component.ComponentType
+import net.minecraft.entity.attribute.EntityAttributes
+import net.minecraft.entity.attribute.EntityAttributeModifier.Operation
 import net.minecraft.item.Item
 import net.minecraft.item.SmithingTemplateItem
 import net.minecraft.item.ToolMaterial
@@ -27,8 +29,8 @@ import net.minecraft.util.Rarity.*
 class SanguoRegistry {
     companion object {
         @JvmStatic
-        @get:JvmName("getHeldEffectComponent")
-        val HELD_EFFECT = component("held_effect", HeldEffectComponent.TYPE)
+        @get:JvmName("getHeldItemEffectComponent")
+        val HELD_EFFECT = component("held_item_effect", HeldItemEffectComponent.TYPE)
 
         @JvmStatic
         @get:JvmName("getImmuneToCactiComponent")
@@ -58,19 +60,24 @@ class SanguoRegistry {
 
     init {
         val items = arrayOf(
-            combat<BlazeStaffItem>("blaze_staff", attackSpeed = -3.0F, useCooldown = 2.5F) {
-                it.component(PROTECTS_AGAINST_EXPLOSIONS, true)
-                    .effect("fire_resistance")
+            combat<BlazeStaffItem>("blaze_staff", attackSpeed = -3.0F, useCooldown = 2.5F) { it
+                .component(PROTECTS_AGAINST_EXPLOSIONS, true)
+                .effect("fire_resistance")
             },
-            combat<FangtianJiItem>("fangtian_ji", "strength" to 0),
-            combat<ViperLance>("viper_lance", "resistance" to 0),
-            combat<Item>("guandao", "strength" to 0),
-            combat<Item>("qiang", "speed" to 1),
-            combat<Item>("yu_jian", "absorption" to 1),
-            combat<FieryItem>("gun", "fire_resistance" to 0),
-            combat<FieryItem>("huya_jian", "slowness" to 0),
-            combat<Item>("yitian_ji", "absorption" to 1),
-            combat<Item>("podao", "strength" to 0, "slowness" to 0),
+            combat<FangtianJiItem>("fangtian_ji", "strength"),
+            combat<ViperLance>("viper_lance", "resistance"),
+            combat<Item>("guandao", "strength"),
+            combat<Item>("qiang", "speed", 1),
+            combat<Item>("yu_jian", "absorption", 1),
+            combat<FieryItem>("gun", "fire_resistance"),
+            combat<Item>("yitian_ji", "absorption", 1),
+            combat<FieryItem>("huya_jian") { it
+                .modifier(EntityAttributes.MOVEMENT_SPEED, -0.15, Operation.ADD_MULTIPLIED_TOTAL)
+            },
+            combat<Item>("podao") { it
+                .modifier(EntityAttributes.MOVEMENT_SPEED, -0.15, Operation.ADD_MULTIPLIED_TOTAL)
+                .effect("strength")
+            },
 
             // Not actually a template. Just a base for the other templates.
             item("stone_template"),
@@ -93,7 +100,7 @@ class SanguoRegistry {
             RegistryKey.of(RegistryKeys.ITEM_GROUP, SanguoArmory.id("item_group")),
             FabricItemGroup
                 .builder()
-                .displayName(Text.translatable("itemGroup.${SanguoArmory.MOD_ID}"))
+                .displayName(Text.translatable("item_group.${SanguoArmory.MOD_ID}"))
                 .icon { items[0].defaultStack }
                 .entries { _, entries -> entries.addAll(items.map { it.defaultStack }) }
                 .build()
@@ -131,12 +138,8 @@ class SanguoRegistry {
             )
         }
 
-    private inline fun <reified T : Item> combat(
-        id: String,
-        vararg effects: Pair<String, Int>
-    ): T = combat(id) { settings ->
-        effects.forEach { settings.effect(it.first, it.second) }
-        settings
+    private inline fun <reified T : Item> combat(id: String, effect: String, level: Int = 0): T = combat(id) {
+        it.effect(effect, level)
     }
 
     private fun item(id: String, rarity: Rarity = COMMON): Item = withType(id) { it.rarity(rarity) }
