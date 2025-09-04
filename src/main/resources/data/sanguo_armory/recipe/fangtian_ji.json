@@ -2,13 +2,14 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         " BC",
-        " A ",
+        " N ",
         "A  "
     ],
     "key": {
         "A": "sanguo_armory:pole",
         "B": "sanguo_armory:crescent_blade",
-        "C": "sanguo_armory:spearhead"
+        "C": "sanguo_armory:spearhead",
+        "N": "minecraft:netherite_ingot"
     },
     "result": {
         "id": "sanguo_armory:fangtian_ji",
