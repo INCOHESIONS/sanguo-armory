@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BBB",
+        "BAB",
+        "BBB"
+    ],
+    "key": {
+        "A": "minecraft:chainmail_chestplate",
+        "B": "sanguo_armory:blue_steel_ingot"
+    },
+    "result": {
+        "id": "sanguo_armory:lamellar_chestplate",
+        "count": 1
+    }
+}
