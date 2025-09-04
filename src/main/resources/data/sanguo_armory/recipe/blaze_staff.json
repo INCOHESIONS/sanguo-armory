@@ -1,16 +1,15 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "BGF",
-        " SG",
-        "P B"
+        " DC",
+        " BD",
+        "A  "
     ],
     "key": {
-        "F": "minecraft:fire_charge",
-        "B": "minecraft:blaze_rod",
-        "G": "minecraft:gold_ingot",
-        "S": "sanguo_armory:blue_steel_ingot",
-        "P": "sanguo_armory:pole"
+        "A": "sanguo_armory:pole",
+        "B": "minecraft:gold_ingot",
+        "C": "sanguo_armory:explosion_core",
+        "D": "sanguo_armory:blue_steel_ingot"
     },
     "result": {
         "id": "sanguo_armory:blaze_staff",

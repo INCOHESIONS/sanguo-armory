@@ -1,0 +1,14 @@
+{
+    "layers": {
+        "humanoid": [
+            {
+                "texture": "sanguo_armory:lamellar"
+            }
+        ],
+        "humanoid_leggings": [
+            {
+                "texture": "sanguo_armory:lamellar"
+            }
+        ]
+    }
+}

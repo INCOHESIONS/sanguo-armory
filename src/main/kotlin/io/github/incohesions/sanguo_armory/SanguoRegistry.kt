@@ -9,17 +9,23 @@ import io.github.incohesions.sanguo_armory.items.FieryItem
 import io.github.incohesions.sanguo_armory.items.ViperLance
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.component.ComponentType
-import net.minecraft.entity.attribute.EntityAttributes
+import net.minecraft.component.type.AttributeModifiersComponent
 import net.minecraft.entity.attribute.EntityAttributeModifier.Operation
+import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.item.Item
 import net.minecraft.item.SmithingTemplateItem
 import net.minecraft.item.ToolMaterial
+import net.minecraft.item.equipment.ArmorMaterial
+import net.minecraft.item.equipment.EquipmentAssetKeys
+import net.minecraft.item.equipment.EquipmentType
 import net.minecraft.network.codec.PacketCodecs
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.BlockTags
+import net.minecraft.registry.tag.TagKey
+import net.minecraft.sound.SoundEvents
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
@@ -56,28 +62,48 @@ class SanguoRegistry {
             .build()
     }
 
-    private val combatMaterial = ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 3.0F, 4.0F, 15, null)
+    private typealias ConfigureItem = (Item.Settings) -> Item.Settings
+
+    private val combatMaterial = ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 3.0F, 0.0F, 15, null)
 
     init {
+        val lamellarArmorMaterial = ArmorMaterial(
+            35, // Durability
+            createDefenseMap(3, 6, 8, 3, 11),
+            13, // Enchantability
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            2.5f, // Toughness
+            0.05f, // Knockback Resistance
+            TagKey.of(RegistryKeys.ITEM, SanguoArmory.id("repairs_lamellar_armor")),
+            RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, SanguoArmory.id("lamellar"))
+        )
+
         val items = arrayOf(
-            combat<BlazeStaffItem>("blaze_staff", attackSpeed = -3.0F, useCooldown = 2.5F) { it
+            combat<BlazeStaffItem>(
+                "blaze_staff",
+                attackDamage = 12.0F,
+                attackSpeed = 3.0F,
+                useCooldown = 2.5F,
+                effect = "fire_resistance" to 0
+            ) { it
                 .component(PROTECTS_AGAINST_EXPLOSIONS, true)
-                .effect("fire_resistance")
+                .attributeModifiers(heavyCombatItemModifiers(attackDamage = 12.0))
             },
-            combat<FangtianJiItem>("fangtian_ji", "strength"),
-            combat<ViperLance>("viper_lance", "resistance"),
-            combat<Item>("guandao", "strength"),
-            combat<Item>("qiang", "speed", 1),
-            combat<Item>("yu_jian", "absorption", 1),
-            combat<FieryItem>("gun", "fire_resistance"),
-            combat<Item>("yitian_ji", "absorption", 1),
-            combat<FieryItem>("huya_jian") { it
-                .modifier(EntityAttributes.MOVEMENT_SPEED, -0.15, Operation.ADD_MULTIPLIED_TOTAL)
+
+            combat<ViperLance>("viper_lance", 12.0F, effect = "resistance" to 0),
+            combat<Item>("guandao", 12.0F, effect = "strength" to 0),
+            combat<Item>("qiang", 12.0F, effect = "speed" to 1),
+            combat<Item>("podao", 12.0F, effect = "strength" to 0) {
+                it.attributeModifiers(heavyCombatItemModifiers())
             },
-            combat<Item>("podao") { it
-                .modifier(EntityAttributes.MOVEMENT_SPEED, -0.15, Operation.ADD_MULTIPLIED_TOTAL)
-                .effect("strength")
-            },
+            combat<FieryItem>("gun", 12.0F, effect = "fire_resistance" to 0),
+
+            combat<FieryItem>("huya_jian", 10.0F) { it.attributeModifiers(heavyCombatItemModifiers()) },
+            combat<Item>("yu_jian", 9.0F, effect = "absorption" to 1),
+            combat<Item>("yitian_ji", 9.0F, effect = "absorption" to 1),
+            combat<FangtianJiItem>("fangtian_ji", 9.0F, effect = "strength" to 0),
+
+            *entireArmor("lamellar", lamellarArmorMaterial, EPIC),
 
             // Not actually a template. Just a base for the other templates.
             item("stone_template"),
@@ -92,6 +118,8 @@ class SanguoRegistry {
             item("crescent_blade", RARE),
             item("guandao_blade", RARE),
             item("spearhead", RARE),
+
+            item("explosion_core", EPIC),
             item("pole"),
         )
 
@@ -114,7 +142,7 @@ class SanguoRegistry {
 
     private inline fun <reified T : Item> withType(
         id: String,
-        configure: (Item.Settings) -> Item.Settings = { it }
+        configure: ConfigureItem = { it }
     ): T = factory(id) {
         T::class.constructors.first().call(configure(it))
     }
@@ -123,26 +151,47 @@ class SanguoRegistry {
         id: String,
         attackDamage: Float = 9.0F,
         attackSpeed: Float = -2.4F,
+        effect: Pair<String, Int>? = null,
         useCooldown: Float? = null,
-        configure: (Item.Settings) -> Item.Settings = { it }
-    ): T =
-        withType(id) {
-            configure(
-                it
-                    .sword(combatMaterial, attackDamage, attackSpeed)
-                    .lore(Text.translatable("item.${SanguoArmory.MOD_ID}.$id.lore").formatted(Formatting.GRAY))
-                    .cooldown(useCooldown)
-                    .unbreakable()
-                    .indestructible()
-                    .rarity(EPIC)
-            )
-        }
-
-    private inline fun <reified T : Item> combat(id: String, effect: String, level: Int = 0): T = combat(id) {
-        it.effect(effect, level)
+        configure: ConfigureItem = { it }
+    ): T = withType(id) {
+        configure( it
+            .sword(combatMaterial, attackDamage, attackSpeed)
+            .lore(Text.translatable("item.${SanguoArmory.MOD_ID}.$id.lore").formatted(Formatting.GRAY))
+            .cooldown(useCooldown)
+            .effect(effect)
+            .unbreakable()
+            .indestructible()
+            .rarity(EPIC)
+        )
     }
 
-    private fun item(id: String, rarity: Rarity = COMMON): Item = withType(id) { it.rarity(rarity) }
+    private fun item(
+        id: String,
+        rarity: Rarity = COMMON,
+        configure: ConfigureItem = { it }
+    ): Item = withType(id) { configure(it.rarity(rarity)) }
+
+    private fun entireArmor(
+        name: String,
+        material: ArmorMaterial,
+        rarity: Rarity
+    ): Array<Item> =
+        arrayListOf("helmet", "chestplate", "leggings", "boots").map { type ->
+            item("${name}_$type", rarity) {
+                it.armor(material, EquipmentType.valueOf(type.uppercase()))
+            }
+        }.toTypedArray()
+
+    private fun createDefenseMap(boots: Int, leggings: Int, chestplate: Int, helmet: Int, body: Int) =
+        mutableMapOf(
+            EquipmentType.BOOTS to boots,
+            EquipmentType.LEGGINGS to leggings,
+            EquipmentType.CHESTPLATE to chestplate,
+            EquipmentType.HELMET to helmet,
+            EquipmentType.BODY to body
+        )
+
 
     private fun template(id: String): SmithingTemplateItem = factory(id) {
         SmithingTemplateItem(  // Currently the same for all templates
@@ -154,5 +203,13 @@ class SanguoRegistry {
             listOf(Identifier.ofVanilla("container/slot/iron_ingot")),
             it.rarity(RARE)
         )
+    }
+
+    private fun heavyCombatItemModifiers(attackDamage: Double = 10.0): AttributeModifiersComponent {
+        return AttributeModifiersComponent.builder()
+            .add(EntityAttributes.ATTACK_DAMAGE, id = Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, value = attackDamage)
+            .add(EntityAttributes.ATTACK_SPEED, id = Item.BASE_ATTACK_SPEED_MODIFIER_ID, value = -3.0)
+            .add(EntityAttributes.MOVEMENT_SPEED, operation = Operation.ADD_MULTIPLIED_TOTAL, value = -0.15)
+            .build()
     }
 }

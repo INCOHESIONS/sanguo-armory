@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ABA",
+        "BCB",
+        "ABA"
+    ],
+    "key": {
+        "A": "minecraft:netherite_scrap",
+        "B": "minecraft:gunpowder",
+        "C": "minecraft:blaze_rod"
+    },
+    "result": {
+        "id": "sanguo_armory:explosion_core",
+        "count": 1
+    }
+}
