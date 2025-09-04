@@ -32,9 +32,9 @@ class FangtianJiItem(settings: Settings) : Item(settings) {
 
         if (entity !is PlayerEntity || !isHoldingItem(slot)) return
 
-        stops.forEach {
+        stops.forEach { stop ->
             arrayOf(::sin, ::cos).forEach { func ->
-                val angle = Math.toRadians((world.server.ticks * SPEED) % 360 + it)
+                val angle = Math.toRadians((world.server.ticks * SPEED) % 360 + stop)
                 val pos = entity.pos.add(cos(angle) * DIST, func(angle) + 1.0, sin(angle) * DIST)
 
                 world.spawnParticles(
