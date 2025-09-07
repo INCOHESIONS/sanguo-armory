@@ -1,11 +1,14 @@
-package io.github.incohesions.sanguo_armory.utils
+package io.github.incohesions.sanguo_armory.registry.item.utils
 
+import io.github.incohesions.sanguo_armory.SanguoArmory
 import net.minecraft.item.Item
 import net.minecraft.item.equipment.ArmorMaterial
 import net.minecraft.item.equipment.ArmorMaterials
 import net.minecraft.item.equipment.EquipmentAsset
+import net.minecraft.item.equipment.EquipmentAssetKeys
 import net.minecraft.item.equipment.EquipmentType
 import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.entry.RegistryEntry
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
@@ -18,8 +21,8 @@ class ArmorMaterialBuilder(base: ArmorMaterial = ArmorMaterials.DIAMOND) {
 
     private var sound: RegistryEntry<SoundEvent> = base.equipSound
     private var defense: Map<EquipmentType, Int> = base.defense
-    private var ingredient: TagKey<Item> = base.repairIngredient
-    private var asset: RegistryKey<EquipmentAsset> = base.assetId
+    private var repairTag: TagKey<Item> = base.repairIngredient
+    private var assetKey: RegistryKey<EquipmentAsset> = base.assetId
 
     fun durability(durability: Int) = apply { this.durability = durability }
 
@@ -32,7 +35,7 @@ class ArmorMaterialBuilder(base: ArmorMaterial = ArmorMaterials.DIAMOND) {
     fun sound(sound: RegistryEntry<SoundEvent>) = apply { this.sound = sound }
 
     fun defense(boots: Int, leggings: Int, chestplate: Int, helmet: Int, body: Int) = apply {
-        this.defense = mutableMapOf(
+        this.defense = mapOf(
             EquipmentType.BOOTS to boots,
             EquipmentType.LEGGINGS to leggings,
             EquipmentType.CHESTPLATE to chestplate,
@@ -41,9 +44,9 @@ class ArmorMaterialBuilder(base: ArmorMaterial = ArmorMaterials.DIAMOND) {
         )
     }
 
-    fun ingredient(ingredient: TagKey<Item>) = apply { this.ingredient = ingredient }
+    fun repairTag(id: String) = apply { this.repairTag = TagKey.of(RegistryKeys.ITEM, SanguoArmory.id(id)) }
 
-    fun asset(asset: RegistryKey<EquipmentAsset>) = apply { this.asset = asset }
+    fun assetKey(id: String) = apply { this.assetKey = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, SanguoArmory.id(id)) }
 
     fun build() = ArmorMaterial(
         durability,
@@ -52,7 +55,7 @@ class ArmorMaterialBuilder(base: ArmorMaterial = ArmorMaterials.DIAMOND) {
         sound,
         toughness,
         knockbackResistance,
-        ingredient,
-        asset,
+        repairTag,
+        assetKey,
     )
 }

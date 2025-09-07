@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " DC",
+        " B ",
+        "A  "
+    ],
+    "key": {
+        "A": "sanguo_armory:pole",
+        "B": "minecraft:lapis_lazuli",
+        "C": "sanguo_armory:spearhead",
+        "D": "sanguo_armory:crescent_blade"
+    },
+    "result": {
+        "id": "sanguo_armory:daun_ji",
+        "count": 1
+    }
+}

@@ -1,6 +1,6 @@
 package io.github.incohesions.sanguo_armory.mixin;
 
-import io.github.incohesions.sanguo_armory.SanguoRegistry;
+import io.github.incohesions.sanguo_armory.registry.component.ComponentRegistry;
 import io.github.incohesions.sanguo_armory.utils.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -30,14 +30,12 @@ public abstract class ItemEntityMixin extends Entity {
         final float amount,
         final CallbackInfoReturnable<Boolean> cir
     ) {
-        final var immuneToAnvils = Utils.checkComponent(getStack(), SanguoRegistry.getImmuneToAnvilsComponent());
-        final var immuneToCacti = Utils.checkComponent(getStack(), SanguoRegistry.getImmuneToCactiComponent());
+        final var immuneToAnvils = Utils.checkBool(getStack(), ComponentRegistry.getImmuneToAnvilsComponent());
+        final var immuneToCacti = Utils.checkBool(getStack(), ComponentRegistry.getImmuneToCactiComponent());
 
-        if (
+        Utils.cancelIf(cir, (
             immuneToAnvils && source.isOf(DamageTypes.FALLING_ANVIL) ||
             immuneToCacti && source.isOf(DamageTypes.CACTUS)
-        ) {
-            cir.cancel();
-        }
+        ));
     }
 }

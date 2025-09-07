@@ -1,7 +1,7 @@
-package io.github.incohesions.sanguo_armory.extensions
+package io.github.incohesions.sanguo_armory.registry.item.extensions
 
-import io.github.incohesions.sanguo_armory.SanguoRegistry
-import io.github.incohesions.sanguo_armory.components.HeldItemEffectComponent
+import io.github.incohesions.sanguo_armory.component.HeldItemEffectComponent
+import io.github.incohesions.sanguo_armory.registry.component.ComponentRegistry
 import net.minecraft.component.ComponentType
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.component.type.AttributeModifierSlot
@@ -27,28 +27,23 @@ fun Item.Settings.cooldown(cooldown: Float?): Item.Settings {
     return useCooldown(cooldown ?: return this)
 }
 
-fun Item.Settings.resistant(vararg tags: TagKey<DamageType>): Item.Settings {
-    tags.forEach {
-        component(DataComponentTypes.DAMAGE_RESISTANT, DamageResistantComponent(it))
-    }
-    return this
+fun Item.Settings.resistant(vararg tags: TagKey<DamageType>): Item.Settings = apply {
+    tags.map(::DamageResistantComponent).forEach { component(DataComponentTypes.DAMAGE_RESISTANT, it) }
 }
 
-fun Item.Settings.booleans(vararg components: ComponentType<Boolean>): Item.Settings {
+fun Item.Settings.booleans(vararg components: ComponentType<Boolean>): Item.Settings = apply {
     components.forEach { component(it, true) }
-    return this
 }
 
-fun Item.Settings.markers(vararg components: ComponentType<Unit>): Item.Settings {
+fun Item.Settings.markers(vararg components: ComponentType<Unit>): Item.Settings = apply {
     components.forEach { component(it, Unit.INSTANCE) }
-    return this
 }
 
 fun Item.Settings.unbreakable(): Item.Settings =
     markers(DataComponentTypes.UNBREAKABLE)
 
 fun Item.Settings.indestructible(): Item.Settings = this
-    .booleans(SanguoRegistry.IMMUNE_TO_CACTI, SanguoRegistry.IMMUNE_TO_ANVILS)
+    .booleans(ComponentRegistry.immuneToCacti, ComponentRegistry.immuneToAnvils)
     .resistant(DamageTypeTags.IS_FIRE, DamageTypeTags.IS_EXPLOSION, DamageTypeTags.IS_LIGHTNING)
 
 fun Item.Settings.effect(id: String, amplifier: Int = 0): Item.Settings =
@@ -58,7 +53,10 @@ fun Item.Settings.effect(effect: Pair<String, Int>?): Item.Settings {
     return effect((effect ?: return this).first, effect.second)
 }
 
-// WARN: Should be used only AFTER .tool, .sword or any other similar methods since they also use modifiers.
+/*
+  WARN: Should be used only AFTER .tool, .sword or any other similar methods since they also use modifiers, and using
+  this would overwrite them.
+*/
 fun AttributeModifiersComponent.Builder.add(
     attr: RegistryEntry<EntityAttribute>,
     id: Identifier? = null,

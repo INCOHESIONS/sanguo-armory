@@ -1,11 +1,10 @@
 package io.github.incohesions.sanguo_armory.mixin;
 
-import io.github.incohesions.sanguo_armory.SanguoRegistry;
+import io.github.incohesions.sanguo_armory.registry.component.ComponentRegistry;
 import io.github.incohesions.sanguo_armory.utils.Utils;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,7 +33,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     final void tick(final CallbackInfo ci) {
         if (getWorld().isClient) return;
 
-        final var component = inventory.getSelectedStack().getComponents().get(SanguoRegistry.getHeldItemEffectComponent());
+        final var component = inventory.getSelectedStack().getComponents().get(ComponentRegistry.getHeldItemEffectComponent());
 
         if (component != null) {
             final var key = Registries.STATUS_EFFECT.getEntry(component.effectId());
@@ -50,11 +49,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         final float amount,
         final CallbackInfoReturnable<Boolean> cir
     ) {
-        if (
-            Utils.checkComponent(inventory.getSelectedStack(), SanguoRegistry.getProtectsAgainstExplosions()) &&
-            source.isOf(DamageTypes.PLAYER_EXPLOSION) || source.isOf(DamageTypes.EXPLOSION)
-        ) {
-            cir.cancel();
-        }
+        Utils.cancelIf(cir, (
+            Utils.checkBool(inventory.getSelectedStack(), ComponentRegistry.getProtectsAgainstExplosions()) &&
+            Utils.isAnyExplosion(source)
+        ));
     }
 }

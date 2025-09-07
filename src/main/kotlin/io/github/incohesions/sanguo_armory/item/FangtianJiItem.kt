@@ -1,4 +1,4 @@
-package io.github.incohesions.sanguo_armory.items
+package io.github.incohesions.sanguo_armory.item
 
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot

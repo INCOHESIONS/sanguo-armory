@@ -1,4 +1,4 @@
-package io.github.incohesions.sanguo_armory.components
+package io.github.incohesions.sanguo_armory.component
 
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
