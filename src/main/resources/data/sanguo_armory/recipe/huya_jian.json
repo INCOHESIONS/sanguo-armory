@@ -7,7 +7,7 @@
     ],
     "key": {
         "A": "minecraft:stick",
-        "B": "minecraft:redstone_dust",
+        "B": "minecraft:redstone",
         "C": "sanguo_armory:guandao_blade"
     },
     "result": {
