@@ -4,7 +4,7 @@ import io.github.incohesions.sanguo_armory.block.kiln.KilnBlock
 import io.github.incohesions.sanguo_armory.registry.core.extensions.of
 import io.github.incohesions.sanguo_armory.registry.core.ConfigureItem
 import io.github.incohesions.sanguo_armory.registry.core.IItemRegistry
-import io.github.incohesions.sanguo_armory.registry.special.KilnRegistry
+import io.github.incohesions.sanguo_armory.registry.block.special.KilnRegistry
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.MapColor

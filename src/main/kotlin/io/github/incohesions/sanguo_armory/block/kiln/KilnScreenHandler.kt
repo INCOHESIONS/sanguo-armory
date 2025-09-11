@@ -1,6 +1,6 @@
 package io.github.incohesions.sanguo_armory.block.kiln
 
-import io.github.incohesions.sanguo_armory.registry.special.KilnRegistry
+import io.github.incohesions.sanguo_armory.registry.block.special.KilnRegistry
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.Inventory
 import net.minecraft.recipe.RecipePropertySet

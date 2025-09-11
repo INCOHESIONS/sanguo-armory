@@ -2,7 +2,7 @@ package io.github.incohesions.sanguo_armory.screen
 
 import io.github.incohesions.sanguo_armory.block.kiln.KilnScreenHandler
 import io.github.incohesions.sanguo_armory.registry.item.MaterialRegistry
-import io.github.incohesions.sanguo_armory.registry.special.KilnRegistry
+import io.github.incohesions.sanguo_armory.registry.block.special.KilnRegistry
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.gui.screen.ingame.AbstractFurnaceScreen

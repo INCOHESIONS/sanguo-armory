@@ -1,6 +1,6 @@
 package io.github.incohesions.sanguo_armory.registry.core
 
-import io.github.incohesions.sanguo_armory.registry.special.KilnRegistry
+import io.github.incohesions.sanguo_armory.registry.block.special.KilnRegistry
 
 /*
   For registries that do more than one thing, because having Block Entity, Recipe Type, Recipe Serializer and

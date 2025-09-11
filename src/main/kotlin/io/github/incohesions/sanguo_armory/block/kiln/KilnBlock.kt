@@ -1,7 +1,7 @@
 package io.github.incohesions.sanguo_armory.block.kiln
 
 import com.mojang.serialization.MapCodec
-import io.github.incohesions.sanguo_armory.registry.special.KilnRegistry
+import io.github.incohesions.sanguo_armory.registry.block.special.KilnRegistry
 import net.minecraft.block.AbstractFurnaceBlock
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity

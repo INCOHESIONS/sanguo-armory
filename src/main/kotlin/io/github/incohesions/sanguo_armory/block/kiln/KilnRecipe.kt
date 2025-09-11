@@ -1,7 +1,7 @@
 package io.github.incohesions.sanguo_armory.block.kiln
 
 import io.github.incohesions.sanguo_armory.registry.block.BlockRegistry
-import io.github.incohesions.sanguo_armory.registry.special.KilnRegistry
+import io.github.incohesions.sanguo_armory.registry.block.special.KilnRegistry
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.recipe.AbstractCookingRecipe

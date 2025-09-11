@@ -1,4 +1,4 @@
-package io.github.incohesions.sanguo_armory.registry.special
+package io.github.incohesions.sanguo_armory.registry.block.special
 
 import io.github.incohesions.sanguo_armory.block.kiln.KilnBlockEntity
 import io.github.incohesions.sanguo_armory.block.kiln.KilnRecipe
