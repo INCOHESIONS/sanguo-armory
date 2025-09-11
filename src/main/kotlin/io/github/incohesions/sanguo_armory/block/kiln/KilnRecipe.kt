@@ -9,7 +9,6 @@ import net.minecraft.recipe.Ingredient
 import net.minecraft.recipe.RecipeSerializer
 import net.minecraft.recipe.RecipeType
 import net.minecraft.recipe.book.CookingRecipeCategory
-import net.minecraft.recipe.book.RecipeBookCategories
 import net.minecraft.recipe.book.RecipeBookCategory
 
 class KilnRecipe(
@@ -29,9 +28,5 @@ class KilnRecipe(
 
     override fun getCookerItem(): Item = BlockRegistry.kiln
 
-    override fun getRecipeBookCategory(): RecipeBookCategory = when (category) {
-        BLOCKS -> RecipeBookCategories.FURNACE_BLOCKS
-        FOOD -> RecipeBookCategories.FURNACE_FOOD
-        MISC -> RecipeBookCategories.FURNACE_MISC
-    }
+    override fun getRecipeBookCategory(): RecipeBookCategory = KilnRegistry.recipeCategory
 }

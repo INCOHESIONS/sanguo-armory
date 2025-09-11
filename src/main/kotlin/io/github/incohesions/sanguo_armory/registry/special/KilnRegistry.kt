@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntit
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.recipe.AbstractCookingRecipe
 import net.minecraft.recipe.RecipeType
+import net.minecraft.recipe.book.RecipeBookCategory
 import net.minecraft.registry.Registries
 import net.minecraft.resource.featuretoggle.FeatureSet
 import net.minecraft.screen.ScreenHandlerType
@@ -21,6 +22,10 @@ object KilnRegistry : ISpecialRegistry {
         KILN_ID, FabricBlockEntityTypeBuilder.create(::KilnBlockEntity, BlockRegistry.kiln.block).build()
     )
 
+    val screenHandler = Registries.SCREEN_HANDLER.register(
+        KILN_ID, ScreenHandlerType(::KilnScreenHandler, FeatureSet.empty())
+    )
+
     val recipeType = Registries.RECIPE_TYPE.register(
         KILN_ID, object : RecipeType<KilnRecipe> { override fun toString(): String = KILN_ID }
     )
@@ -29,7 +34,5 @@ object KilnRegistry : ISpecialRegistry {
         KILN_ID, AbstractCookingRecipe.Serializer(::KilnRecipe, 200)
     )
 
-    val screenHandler = Registries.SCREEN_HANDLER.register(
-        KILN_ID, ScreenHandlerType(::KilnScreenHandler, FeatureSet.empty())
-    )
+    val recipeCategory = Registries.RECIPE_BOOK_CATEGORY.register(KILN_ID, RecipeBookCategory())
 }

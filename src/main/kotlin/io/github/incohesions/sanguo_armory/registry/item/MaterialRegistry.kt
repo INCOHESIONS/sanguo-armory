@@ -13,6 +13,8 @@ import net.minecraft.util.Rarity
 import net.minecraft.util.Rarity.*
 
 object MaterialRegistry : IItemRegistry {
+    val blueSteelIngot = material("blue_steel_ingot", RARE)
+
     override fun registerAll(): Array<Item> =
         arrayOf(
             // Not actually a template. Just a base for the other templates.
@@ -26,7 +28,7 @@ object MaterialRegistry : IItemRegistry {
             material("guandao_blade", RARE),
             material("spearhead", RARE),
 
-            material("blue_steel_ingot", RARE),
+            blueSteelIngot,
             material("mild_steel_ingot", UNCOMMON),
 
             material("explosion_core", EPIC, defaultLore = true),
