@@ -1,7 +1,6 @@
-package io.github.incohesions.sanguo_armory.integration.rei.category
+package io.github.incohesions.sanguo_armory.integration.rei.kiln
 
-import io.github.incohesions.sanguo_armory.integration.rei.SanguoArmoryREICommon
-import io.github.incohesions.sanguo_armory.integration.rei.display.KilnDisplay
+import io.github.incohesions.sanguo_armory.integration.rei.SanguoArmoryREI
 import io.github.incohesions.sanguo_armory.registry.block.BlockRegistry
 import me.shedaniel.rei.api.client.gui.Renderer
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory
@@ -12,9 +11,9 @@ import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
 class KilnCategory : DisplayCategory<KilnDisplay> {
-    override fun getCategoryIdentifier(): CategoryIdentifier<KilnDisplay> = SanguoArmoryREICommon.kilnDisplayCategory
+    override fun getCategoryIdentifier(): CategoryIdentifier<KilnDisplay> = SanguoArmoryREI.kilnDisplayCategory
 
-    override fun getIdentifier(): Identifier = SanguoArmoryREICommon.kilnDisplayCategory.identifier
+    override fun getIdentifier(): Identifier = SanguoArmoryREI.kilnDisplayCategory.identifier
 
     override fun getIcon(): Renderer = EntryStacks.of(ItemStack(BlockRegistry.kiln))
 

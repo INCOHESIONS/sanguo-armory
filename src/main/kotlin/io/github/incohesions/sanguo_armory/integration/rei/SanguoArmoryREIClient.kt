@@ -2,8 +2,8 @@ package io.github.incohesions.sanguo_armory.integration.rei
 
 import io.github.incohesions.sanguo_armory.block.kiln.KilnRecipe
 import io.github.incohesions.sanguo_armory.block.kiln.KilnScreenHandler
-import io.github.incohesions.sanguo_armory.integration.rei.category.KilnCategory
-import io.github.incohesions.sanguo_armory.integration.rei.display.KilnDisplay
+import io.github.incohesions.sanguo_armory.integration.rei.kiln.KilnCategory
+import io.github.incohesions.sanguo_armory.integration.rei.kiln.KilnDisplay
 import io.github.incohesions.sanguo_armory.registry.block.BlockRegistry
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry
@@ -26,7 +26,7 @@ class SanguoArmoryREIClient : REIClientPlugin {
 
     override fun registerCategories(registry: CategoryRegistry) {
         registry.add(KilnCategory())
-        registry.addWorkstations(SanguoArmoryREICommon.kilnDisplayCategory, EntryStacks.of(BlockRegistry.kiln))
+        registry.addWorkstations(SanguoArmoryREI.kilnDisplayCategory, EntryStacks.of(BlockRegistry.kiln))
     }
 
     @Suppress("UnstableApiUsage")
@@ -34,7 +34,7 @@ class SanguoArmoryREIClient : REIClientPlugin {
         registry.register(
             SimpleTransferHandler.create(
                 KilnScreenHandler::class.java,
-                SanguoArmoryREICommon.kilnDisplayCategory,
+                SanguoArmoryREI.kilnDisplayCategory,
                 SimpleTransferHandler.IntRange(0, 1)
             )
         )

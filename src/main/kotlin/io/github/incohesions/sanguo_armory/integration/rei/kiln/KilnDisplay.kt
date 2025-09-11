@@ -1,14 +1,14 @@
-package io.github.incohesions.sanguo_armory.integration.rei.display
+package io.github.incohesions.sanguo_armory.integration.rei.kiln
 
 import com.mojang.serialization.codecs.RecordCodecBuilder
-import io.github.incohesions.sanguo_armory.integration.rei.SanguoArmoryREICommon
+import io.github.incohesions.sanguo_armory.integration.rei.SanguoArmoryREI
 import me.shedaniel.rei.api.common.category.CategoryIdentifier
 import me.shedaniel.rei.api.common.display.Display
 import me.shedaniel.rei.api.common.display.DisplaySerializer
 import me.shedaniel.rei.api.common.entry.EntryIngredient
 import net.minecraft.network.codec.PacketCodec
 import net.minecraft.util.Identifier
-import java.util.*
+import java.util.Optional
 
 class KilnDisplay(val input: EntryIngredient, val output: EntryIngredient) : Display {
     private val serializer: DisplaySerializer<KilnDisplay> = DisplaySerializer.of(
@@ -29,7 +29,7 @@ class KilnDisplay(val input: EntryIngredient, val output: EntryIngredient) : Dis
 
     override fun getOutputEntries(): MutableList<EntryIngredient> = mutableListOf(output)
 
-    override fun getCategoryIdentifier(): CategoryIdentifier<KilnDisplay> = SanguoArmoryREICommon.kilnDisplayCategory
+    override fun getCategoryIdentifier(): CategoryIdentifier<KilnDisplay> = SanguoArmoryREI.kilnDisplayCategory
 
     override fun getDisplayLocation(): Optional<Identifier> = Optional.empty()
 
