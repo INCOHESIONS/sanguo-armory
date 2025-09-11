@@ -35,7 +35,7 @@ class ArmorMaterialBuilder(base: ArmorMaterial = ArmorMaterials.DIAMOND) {
     fun sound(sound: RegistryEntry<SoundEvent>) = apply { this.sound = sound }
 
     fun defense(boots: Int, leggings: Int, chestplate: Int, helmet: Int, body: Int) = apply {
-        this.defense = mapOf(
+        defense = mapOf(
             EquipmentType.BOOTS to boots,
             EquipmentType.LEGGINGS to leggings,
             EquipmentType.CHESTPLATE to chestplate,
@@ -44,9 +44,13 @@ class ArmorMaterialBuilder(base: ArmorMaterial = ArmorMaterials.DIAMOND) {
         )
     }
 
-    fun repairTag(id: String) = apply { this.repairTag = TagKey.of(RegistryKeys.ITEM, SanguoArmory.id(id)) }
+    fun repairTag(id: String) = apply {
+        repairTag = TagKey.of(RegistryKeys.ITEM, SanguoArmory.id(id))
+    }
 
-    fun assetKey(id: String) = apply { this.assetKey = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, SanguoArmory.id(id)) }
+    fun assetKey(id: String) = apply {
+        assetKey = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, SanguoArmory.id(id))
+    }
 
     fun build() = ArmorMaterial(
         durability,

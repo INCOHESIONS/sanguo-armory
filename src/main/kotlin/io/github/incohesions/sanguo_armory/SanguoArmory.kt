@@ -1,7 +1,13 @@
 package io.github.incohesions.sanguo_armory
 
-import io.github.incohesions.sanguo_armory.registry.SanguoRegistry
+import io.github.incohesions.sanguo_armory.registry.core.IItemRegistry
+import io.github.incohesions.sanguo_armory.registry.core.IRegistry
+import io.github.incohesions.sanguo_armory.registry.core.extensions.register
+import io.github.incohesions.sanguo_armory.extensions.flatMapArray
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
+import net.minecraft.registry.Registries
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -19,7 +25,18 @@ class SanguoArmory : ModInitializer {
     }
 
     override fun onInitialize() {
-        SanguoRegistry.init()
+        val items = IRegistry.registries()
+            .filterIsInstance<IItemRegistry>()
+            .flatMapArray { it.registerAll() }
+
+        val group = FabricItemGroup.builder()
+            .displayName(Text.translatable("item_group.${MOD_ID}"))
+            .icon { items[0].defaultStack }
+            .entries { _, entries -> entries.addAll(items.map { it.defaultStack }) }
+            .build()
+
+        Registries.ITEM_GROUP.register("item_group", group)
+
         logger.info("Sanguo Armory has been initialized!")
     }
 }

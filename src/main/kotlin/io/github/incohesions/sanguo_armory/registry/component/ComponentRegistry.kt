@@ -2,8 +2,8 @@ package io.github.incohesions.sanguo_armory.registry.component
 
 import com.mojang.serialization.Codec
 import io.github.incohesions.sanguo_armory.component.HeldItemEffectComponent
-import io.github.incohesions.sanguo_armory.registry.item.extensions.register
-import io.github.incohesions.sanguo_armory.registry.IRegistry
+import io.github.incohesions.sanguo_armory.registry.core.extensions.register
+import io.github.incohesions.sanguo_armory.registry.core.IRegistry
 import net.minecraft.component.ComponentType
 import net.minecraft.network.codec.PacketCodecs
 import net.minecraft.registry.Registries

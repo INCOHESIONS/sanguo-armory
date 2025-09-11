@@ -23,6 +23,8 @@
     "item.sanguo_armory.yitian_ji.lore": "Grants absorption.",
     "item.sanguo_armory.daun_ji": "Daun Ji",
     "item.sanguo_armory.daun_ji.lore": "Grants haste.",
+    "item.sanguo_armory.ge": "Ge",
+    "item.sanguo_armory.ge.lore": "Grants strength.",
 
     "item.sanguo_armory.lamellar_helmet": "Lamellar Helmet",
     "item.sanguo_armory.lamellar_chestplate": "Lamellar Chestplate",
@@ -50,5 +52,8 @@
 
     "item.sanguo_armory.explosion_core": "Explosion Core",
     "item.sanguo_armory.explosion_core.lore": "Fieriness concentrate.",
-    "item.sanguo_armory.pole": "Pole"
+    "item.sanguo_armory.pole": "Pole",
+
+    "block.sanguo_armory.kiln": "Kiln",
+    "item.sanguo_armory.kiln": "Kiln"
 }

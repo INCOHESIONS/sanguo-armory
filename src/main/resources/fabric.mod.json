@@ -17,6 +17,15 @@
     "entrypoints": {
         "main": [
             "io.github.incohesions.sanguo_armory.SanguoArmory"
+        ],
+        "client": [
+            "io.github.incohesions.sanguo_armory.SanguoArmoryClient"
+        ],
+        "rei_client": [
+            "io.github.incohesions.sanguo_armory.integration.rei.SanguoArmoryREIClient"
+        ],
+        "rei_common": [
+            "io.github.incohesions.sanguo_armory.integration.rei.SanguoArmoryREICommon"
         ]
     },
     "mixins": [

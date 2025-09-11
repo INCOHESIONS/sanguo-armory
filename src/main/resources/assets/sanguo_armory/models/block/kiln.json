@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/orientable",
+    "textures": {
+        "front": "sanguo_armory:block/kiln_front",
+        "side": "sanguo_armory:block/kiln_side",
+        "top": "sanguo_armory:block/kiln_top"
+    }
+}
